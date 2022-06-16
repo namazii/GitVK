@@ -10,7 +10,6 @@
 		BC38C31C285B03B2004AC211 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38C31B285B03B2004AC211 /* AppDelegate.swift */; };
 		BC38C31E285B03B2004AC211 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38C31D285B03B2004AC211 /* SceneDelegate.swift */; };
 		BC38C320285B03B2004AC211 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38C31F285B03B2004AC211 /* ViewController.swift */; };
-		BC38C323285B03B2004AC211 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC38C321285B03B2004AC211 /* Main.storyboard */; };
 		BC38C325285B03B6004AC211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC38C324285B03B6004AC211 /* Assets.xcassets */; };
 		BC38C328285B03B6004AC211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		BC38C31B285B03B2004AC211 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC38C31D285B03B2004AC211 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BC38C31F285B03B2004AC211 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BC38C322285B03B2004AC211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC38C324285B03B6004AC211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC38C327285B03B6004AC211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC38C329285B03B6004AC211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,15 +54,30 @@
 		BC38C31A285B03B2004AC211 /* GitVK */ = {
 			isa = PBXGroup;
 			children = (
-				BC38C31B285B03B2004AC211 /* AppDelegate.swift */,
-				BC38C31D285B03B2004AC211 /* SceneDelegate.swift */,
 				BC38C31F285B03B2004AC211 /* ViewController.swift */,
-				BC38C321285B03B2004AC211 /* Main.storyboard */,
-				BC38C324285B03B6004AC211 /* Assets.xcassets */,
-				BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */,
-				BC38C329285B03B6004AC211 /* Info.plist */,
+				BC38C330285B0DAD004AC211 /* Resources */,
+				BC38C32F285B0D76004AC211 /* App */,
 			);
 			path = GitVK;
+			sourceTree = "<group>";
+		};
+		BC38C32F285B0D76004AC211 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BC38C31B285B03B2004AC211 /* AppDelegate.swift */,
+				BC38C31D285B03B2004AC211 /* SceneDelegate.swift */,
+				BC38C329285B03B6004AC211 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BC38C330285B0DAD004AC211 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */,
+				BC38C324285B03B6004AC211 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +140,6 @@
 			files = (
 				BC38C328285B03B6004AC211 /* LaunchScreen.storyboard in Resources */,
 				BC38C325285B03B6004AC211 /* Assets.xcassets in Resources */,
-				BC38C323285B03B2004AC211 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BC38C321285B03B2004AC211 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BC38C322285B03B2004AC211 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,7 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 85D2483FS7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitVK/Info.plist;
+				INFOPLIST_FILE = GitVK/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 85D2483FS7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitVK/Info.plist;
+				INFOPLIST_FILE = GitVK/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
