@@ -71,12 +71,7 @@ class AuthVC: UIViewController {
     }
     
     func setupConstrains() {
-        NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            webView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
-            webView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
-        ])
+        webView.pinEdgesToSuperView()
     }
 }
 
@@ -112,8 +107,9 @@ extension AuthVC: WKNavigationDelegate {
         Session.shared.userid = Int(userId) ?? 0
         Session.shared.expiresIn = Int(expiresIn) ?? 0
 
-        let friendsVC = FriendsVC()
-        navigationController?.pushViewController(friendsVC, animated: true)
+        let mainTabVC = MainTabVC()
+        navigationController?.pushViewController(mainTabVC, animated: true)
+        mainTabVC.navigationController?.isNavigationBarHidden = true
 
         decisionHandler(.cancel)
     }

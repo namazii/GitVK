@@ -1,18 +1,18 @@
 //
-//  FriendsVC.swift
+//  GroupsVC.swift
 //  GitVK
 //
-//  Created by Назар Ткаченко on 21.06.2022.
+//  Created by Назар Ткаченко on 22.06.2022.
 //
 
 import UIKit
 
-class FriendsVC: UIViewController {
+class GroupsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .orange
+        view.backgroundColor = .systemBackground
     }
     
 

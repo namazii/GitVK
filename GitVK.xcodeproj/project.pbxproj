@@ -12,6 +12,10 @@
 		BC38C320285B03B2004AC211 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38C31F285B03B2004AC211 /* AuthVC.swift */; };
 		BC38C325285B03B6004AC211 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC38C324285B03B6004AC211 /* Assets.xcassets */; };
 		BC38C328285B03B6004AC211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */; };
+		BC6F1387286326EF004238F5 /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F1386286326EF004238F5 /* GroupsVC.swift */; };
+		BC6F138928632744004238F5 /* MainTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F138828632744004238F5 /* MainTabVC.swift */; };
+		BC6F138C2863614E004238F5 /* UIView+PinEdges.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F138B2863614E004238F5 /* UIView+PinEdges.swift */; };
+		BC6F138E28636458004238F5 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F138D28636458004238F5 /* FriendCell.swift */; };
 		BC90E9FB2862005700B775BF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FA2862005700B775BF /* Session.swift */; };
 		BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FE286206B600B775BF /* FriendsVC.swift */; };
 		BFD0877AA26FB47A6168C48D /* Pods_GitVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37C8E6C0D89D3BACF1EF7EA /* Pods_GitVK.framework */; };
@@ -28,6 +32,10 @@
 		BC38C324285B03B6004AC211 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC38C327285B03B6004AC211 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC38C329285B03B6004AC211 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6F1386286326EF004238F5 /* GroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsVC.swift; sourceTree = "<group>"; };
+		BC6F138828632744004238F5 /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
+		BC6F138B2863614E004238F5 /* UIView+PinEdges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PinEdges.swift"; sourceTree = "<group>"; };
+		BC6F138D28636458004238F5 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		BC90E9FA2862005700B775BF /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BC90E9FE286206B600B775BF /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,10 +90,11 @@
 		BC38C31A285B03B2004AC211 /* GitVK */ = {
 			isa = PBXGroup;
 			children = (
-				BC90E9F92862003E00B775BF /* Services */,
-				BC38C331285B10E3004AC211 /* ViewControllers */,
-				BC38C330285B0DAD004AC211 /* Resources */,
 				BC38C32F285B0D76004AC211 /* App */,
+				BC38C331285B10E3004AC211 /* Screens */,
+				BC90E9F92862003E00B775BF /* Services */,
+				BC6F138A286360CC004238F5 /* Extensions */,
+				BC38C330285B0DAD004AC211 /* Resources */,
 			);
 			path = GitVK;
 			sourceTree = "<group>";
@@ -109,13 +118,56 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		BC38C331285B10E3004AC211 /* ViewControllers */ = {
+		BC38C331285B10E3004AC211 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F1381286325E8004238F5 /* AuthVC */,
+				BC6F138428632684004238F5 /* TabBar */,
+				BC6F1382286325F9004238F5 /* FriendsVC */,
+				BC6F1385286326A6004238F5 /* Groups */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		BC6F1381286325E8004238F5 /* AuthVC */ = {
 			isa = PBXGroup;
 			children = (
 				BC38C31F285B03B2004AC211 /* AuthVC.swift */,
-				BC90E9FE286206B600B775BF /* FriendsVC.swift */,
 			);
-			path = ViewControllers;
+			path = AuthVC;
+			sourceTree = "<group>";
+		};
+		BC6F1382286325F9004238F5 /* FriendsVC */ = {
+			isa = PBXGroup;
+			children = (
+				BC90E9FE286206B600B775BF /* FriendsVC.swift */,
+				BC6F138D28636458004238F5 /* FriendCell.swift */,
+			);
+			path = FriendsVC;
+			sourceTree = "<group>";
+		};
+		BC6F138428632684004238F5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F138828632744004238F5 /* MainTabVC.swift */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		BC6F1385286326A6004238F5 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F1386286326EF004238F5 /* GroupsVC.swift */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		BC6F138A286360CC004238F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F138B2863614E004238F5 /* UIView+PinEdges.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BC90E9F92862003E00B775BF /* Services */ = {
@@ -240,10 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6F1387286326EF004238F5 /* GroupsVC.swift in Sources */,
 				BC90E9FB2862005700B775BF /* Session.swift in Sources */,
 				BC38C320285B03B2004AC211 /* AuthVC.swift in Sources */,
+				BC6F138C2863614E004238F5 /* UIView+PinEdges.swift in Sources */,
+				BC6F138E28636458004238F5 /* FriendCell.swift in Sources */,
 				BC38C31C285B03B2004AC211 /* AppDelegate.swift in Sources */,
 				BC38C31E285B03B2004AC211 /* SceneDelegate.swift in Sources */,
+				BC6F138928632744004238F5 /* MainTabVC.swift in Sources */,
 				BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
