@@ -14,9 +14,13 @@
 		BC38C328285B03B6004AC211 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC38C326285B03B6004AC211 /* LaunchScreen.storyboard */; };
 		BC90E9FB2862005700B775BF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FA2862005700B775BF /* Session.swift */; };
 		BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FE286206B600B775BF /* FriendsVC.swift */; };
+		BFD0877AA26FB47A6168C48D /* Pods_GitVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37C8E6C0D89D3BACF1EF7EA /* Pods_GitVK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2905350D1364B7FAEF3C677A /* Pods-GitVK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitVK.release.xcconfig"; path = "Target Support Files/Pods-GitVK/Pods-GitVK.release.xcconfig"; sourceTree = "<group>"; };
+		361137D2320E6AA851406150 /* Pods-GitVK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitVK.debug.xcconfig"; path = "Target Support Files/Pods-GitVK/Pods-GitVK.debug.xcconfig"; sourceTree = "<group>"; };
+		A37C8E6C0D89D3BACF1EF7EA /* Pods_GitVK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitVK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC38C318285B03B2004AC211 /* GitVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC38C31B285B03B2004AC211 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC38C31D285B03B2004AC211 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD0877AA26FB47A6168C48D /* Pods_GitVK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D66B87BD82ACEC12444622F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A37C8E6C0D89D3BACF1EF7EA /* Pods_GitVK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D9CBF39474B6F221B9AC410 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				361137D2320E6AA851406150 /* Pods-GitVK.debug.xcconfig */,
+				2905350D1364B7FAEF3C677A /* Pods-GitVK.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BC38C30F285B03B2004AC211 = {
 			isa = PBXGroup;
 			children = (
 				BC38C31A285B03B2004AC211 /* GitVK */,
 				BC38C319285B03B2004AC211 /* Products */,
+				7D9CBF39474B6F221B9AC410 /* Pods */,
+				5D66B87BD82ACEC12444622F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC38C32C285B03B6004AC211 /* Build configuration list for PBXNativeTarget "GitVK" */;
 			buildPhases = (
+				CF2A0E0AC04E832E7D4DE569 /* [CP] Check Pods Manifest.lock */,
 				BC38C314285B03B2004AC211 /* Sources */,
 				BC38C315285B03B2004AC211 /* Frameworks */,
 				BC38C316285B03B2004AC211 /* Resources */,
+				E5E24ADC8AF101AE3C977B1A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,6 +192,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF2A0E0AC04E832E7D4DE569 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GitVK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5E24ADC8AF101AE3C977B1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitVK/Pods-GitVK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GitVK/Pods-GitVK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GitVK/Pods-GitVK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC38C314285B03B2004AC211 /* Sources */ = {
@@ -310,6 +378,7 @@
 		};
 		BC38C32D285B03B6004AC211 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 361137D2320E6AA851406150 /* Pods-GitVK.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,7 +389,6 @@
 				INFOPLIST_FILE = GitVK/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -338,6 +406,7 @@
 		};
 		BC38C32E285B03B6004AC211 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2905350D1364B7FAEF3C677A /* Pods-GitVK.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -348,7 +417,6 @@
 				INFOPLIST_FILE = GitVK/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
