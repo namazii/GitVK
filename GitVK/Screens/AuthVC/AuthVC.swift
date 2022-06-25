@@ -24,6 +24,15 @@ class AuthVC: UIViewController {
         
         setupViews()
         setupConstrains()
+        
+        if Session.isTokenValid {
+            // Переход на следующий контроллер
+            let mainTabVC = MainTabVC()
+            navigationController?.pushViewController(mainTabVC, animated: true)
+            navigationController?.isNavigationBarHidden = true
+            return
+        }
+        
         authorizeToVK()
     }
     
@@ -107,10 +116,11 @@ extension AuthVC: WKNavigationDelegate {
         Session.shared.userid = Int(userId) ?? 0
         Session.shared.expiresIn = Int(expiresIn) ?? 0
 
+        // Переход на следующий контроллер
         let mainTabVC = MainTabVC()
         navigationController?.pushViewController(mainTabVC, animated: true)
-        mainTabVC.navigationController?.isNavigationBarHidden = true
-
+        navigationController?.isNavigationBarHidden = true
+    
         decisionHandler(.cancel)
     }
 }

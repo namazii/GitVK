@@ -8,5 +8,6 @@ target 'GitVK' do
   # Pods for GitVK
 
 pod 'SDWebImage', '5.12.5'
+pod 'SwiftKeychainWrapper', '4.0.1'
 
 end
