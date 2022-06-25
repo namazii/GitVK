@@ -7,12 +7,9 @@
 
 import UIKit
 
-struct Friend {
-    var name = "test user"
-    var image = UIImage(named: "avatar")
-}
-
 final class FriendsVC: UIViewController {
+    
+    var friendsAPI = FriendsAPI()
     
     var friends: [Friend] = [Friend()]
     
@@ -28,8 +25,11 @@ final class FriendsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupViews()
+        
+        friendsAPI.fetchFriends { friends in
+            print(friends)
+        }
     }
     
     private func setupViews() {
