@@ -13,12 +13,11 @@ class AuthVC: UIViewController {
     lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
-        
         webView.navigationDelegate = self
-        
         return webView
     }()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,17 +25,15 @@ class AuthVC: UIViewController {
         setupConstrains()
         
         if Session.isTokenValid {
-            // Переход на следующий контроллер
-            let mainTabVC = MainTabVC()
-            navigationController?.pushViewController(mainTabVC, animated: true)
-            navigationController?.isNavigationBarHidden = true
+            showMainTabBarController()
             return
         }
         
         authorizeToVK()
     }
     
-    func authorizeToVK() {
+    //MARK: - Private methods
+    private func authorizeToVK() {
         
         //https://oauth.vk.com/authorize?client_id=1&display=page&redirect_uri=http://example.com/callback&scope=friends&response_type=code&v=5.131
         
@@ -63,27 +60,31 @@ class AuthVC: UIViewController {
             webView.load(request)
     }
     
-    func loadUrl() {
+    private func loadUrl() {
         guard let url = URL(string: "https://www.apple.com") else { return }
         if let data = try? Data(contentsOf: url) {
-            let request = URLRequest(url: url)
-            webView.load(data,
-                         mimeType: "application/pdf",
-                         characterEncodingName: "",
-                         baseURL: url
-            )
+            webView.load(data,mimeType: "application/pdf",characterEncodingName: "",baseURL: url)
         }
     }
     
-    func setupViews() {
+    private  func setupViews() {
         view.addSubview(webView)
     }
     
-    func setupConstrains() {
+    private func setupConstrains() {
         webView.pinEdgesToSuperView()
+    }
+    
+    //MARK: - Navigation
+    private func showMainTabBarController() {
+        // Переход на следующий контроллер
+        let mainTabVC = MainTabVC()
+        navigationController?.pushViewController(mainTabVC, animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
+//MARK: - Extensions
 extension AuthVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
 
@@ -115,12 +116,9 @@ extension AuthVC: WKNavigationDelegate {
         Session.shared.accessToken = token
         Session.shared.userid = Int(userId) ?? 0
         Session.shared.expiresIn = Int(expiresIn) ?? 0
-
-        // Переход на следующий контроллер
-        let mainTabVC = MainTabVC()
-        navigationController?.pushViewController(mainTabVC, animated: true)
-        navigationController?.isNavigationBarHidden = true
     
+        showMainTabBarController()
+        
         decisionHandler(.cancel)
     }
 }
