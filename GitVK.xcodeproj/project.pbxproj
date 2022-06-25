@@ -18,6 +18,9 @@
 		BC6F138E28636458004238F5 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F138D28636458004238F5 /* FriendCell.swift */; };
 		BC90E9FB2862005700B775BF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FA2862005700B775BF /* Session.swift */; };
 		BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FE286206B600B775BF /* FriendsVC.swift */; };
+		BCC6C9DD28674378002EA106 /* FriendsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9DC28674378002EA106 /* FriendsAPI.swift */; };
+		BCC6C9DF28674471002EA106 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9DE28674471002EA106 /* Friend.swift */; };
+		BCC6C9E228674CB1002EA106 /* Data+PrettyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9E128674CB1002EA106 /* Data+PrettyJSON.swift */; };
 		BFD0877AA26FB47A6168C48D /* Pods_GitVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A37C8E6C0D89D3BACF1EF7EA /* Pods_GitVK.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,9 @@
 		BC6F138D28636458004238F5 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		BC90E9FA2862005700B775BF /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BC90E9FE286206B600B775BF /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		BCC6C9DC28674378002EA106 /* FriendsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAPI.swift; sourceTree = "<group>"; };
+		BCC6C9DE28674471002EA106 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		BCC6C9E128674CB1002EA106 /* Data+PrettyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyJSON.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,7 @@
 			children = (
 				BC38C32F285B0D76004AC211 /* App */,
 				BC38C331285B10E3004AC211 /* Screens */,
+				BCC6C9E02867448E002EA106 /* Models */,
 				BC90E9F92862003E00B775BF /* Services */,
 				BC6F138A286360CC004238F5 /* Extensions */,
 				BC38C330285B0DAD004AC211 /* Resources */,
@@ -166,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BC6F138B2863614E004238F5 /* UIView+PinEdges.swift */,
+				BCC6C9E128674CB1002EA106 /* Data+PrettyJSON.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -174,8 +182,17 @@
 			isa = PBXGroup;
 			children = (
 				BC90E9FA2862005700B775BF /* Session.swift */,
+				BCC6C9DC28674378002EA106 /* FriendsAPI.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BCC6C9E02867448E002EA106 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BCC6C9DE28674471002EA106 /* Friend.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,12 +312,15 @@
 				BC6F1387286326EF004238F5 /* GroupsVC.swift in Sources */,
 				BC90E9FB2862005700B775BF /* Session.swift in Sources */,
 				BC38C320285B03B2004AC211 /* AuthVC.swift in Sources */,
+				BCC6C9E228674CB1002EA106 /* Data+PrettyJSON.swift in Sources */,
 				BC6F138C2863614E004238F5 /* UIView+PinEdges.swift in Sources */,
 				BC6F138E28636458004238F5 /* FriendCell.swift in Sources */,
 				BC38C31C285B03B2004AC211 /* AppDelegate.swift in Sources */,
+				BCC6C9DD28674378002EA106 /* FriendsAPI.swift in Sources */,
 				BC38C31E285B03B2004AC211 /* SceneDelegate.swift in Sources */,
 				BC6F138928632744004238F5 /* MainTabVC.swift in Sources */,
 				BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */,
+				BCC6C9DF28674471002EA106 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

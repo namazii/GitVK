@@ -15,6 +15,8 @@ class Session {
     //Глобальная память, константа
     static let shared = Session()
     
+    var version: String = "5.131"
+    
     //Keychain
     var accessToken: String {
         get {
@@ -26,7 +28,7 @@ class Session {
     }
     
     //UserDefaults
-    var userid: Int {
+    var userId: Int {
         get {
             return UserDefaults.standard.integer(forKey: "userId")
         }
