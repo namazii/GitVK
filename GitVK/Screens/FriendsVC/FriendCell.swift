@@ -42,8 +42,8 @@ class FriendCell: UITableViewCell {
     
     //MARK: - Public
     func configure(_ friend: Friend) {
-        nameLabel.text = friend.name
-        photoImageView.image = friend.image
+        nameLabel.text = "\(friend.firstName) \(friend.lastName)"
+        photoImageView.sd_setImage(with: URL(string: friend.photo50))
     }
     
     //MARK: - Private methods

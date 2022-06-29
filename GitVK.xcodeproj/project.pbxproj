@@ -18,6 +18,8 @@
 		BC6F138E28636458004238F5 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F138D28636458004238F5 /* FriendCell.swift */; };
 		BC90E9FB2862005700B775BF /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FA2862005700B775BF /* Session.swift */; };
 		BC90E9FF286206B600B775BF /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC90E9FE286206B600B775BF /* FriendsVC.swift */; };
+		BCC2B006286A33E600BBCE08 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2B005286A33E600BBCE08 /* Group.swift */; };
+		BCC2B008286B2FF300BBCE08 /* GroupsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2B007286B2FF300BBCE08 /* GroupsAPI.swift */; };
 		BCC6C9DD28674378002EA106 /* FriendsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9DC28674378002EA106 /* FriendsAPI.swift */; };
 		BCC6C9DF28674471002EA106 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9DE28674471002EA106 /* Friend.swift */; };
 		BCC6C9E228674CB1002EA106 /* Data+PrettyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6C9E128674CB1002EA106 /* Data+PrettyJSON.swift */; };
@@ -41,6 +43,8 @@
 		BC6F138D28636458004238F5 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		BC90E9FA2862005700B775BF /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		BC90E9FE286206B600B775BF /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		BCC2B005286A33E600BBCE08 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		BCC2B007286B2FF300BBCE08 /* GroupsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsAPI.swift; sourceTree = "<group>"; };
 		BCC6C9DC28674378002EA106 /* FriendsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsAPI.swift; sourceTree = "<group>"; };
 		BCC6C9DE28674471002EA106 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		BCC6C9E128674CB1002EA106 /* Data+PrettyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyJSON.swift"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 			children = (
 				BC90E9FA2862005700B775BF /* Session.swift */,
 				BCC6C9DC28674378002EA106 /* FriendsAPI.swift */,
+				BCC2B007286B2FF300BBCE08 /* GroupsAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				BCC6C9DE28674471002EA106 /* Friend.swift */,
+				BCC2B005286A33E600BBCE08 /* Group.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,12 +315,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC2B008286B2FF300BBCE08 /* GroupsAPI.swift in Sources */,
 				BC6F1387286326EF004238F5 /* GroupsVC.swift in Sources */,
 				BC90E9FB2862005700B775BF /* Session.swift in Sources */,
 				BC38C320285B03B2004AC211 /* AuthVC.swift in Sources */,
 				BCC6C9E228674CB1002EA106 /* Data+PrettyJSON.swift in Sources */,
 				BC6F138C2863614E004238F5 /* UIView+PinEdges.swift in Sources */,
 				BC6F138E28636458004238F5 /* FriendCell.swift in Sources */,
+				BCC2B006286A33E600BBCE08 /* Group.swift in Sources */,
 				BC38C31C285B03B2004AC211 /* AppDelegate.swift in Sources */,
 				BCC6C9DD28674378002EA106 /* FriendsAPI.swift in Sources */,
 				BC38C31E285B03B2004AC211 /* SceneDelegate.swift in Sources */,
