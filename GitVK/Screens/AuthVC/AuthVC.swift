@@ -44,7 +44,7 @@ class AuthVC: UIViewController {
         urlComponents.path = "/authorize"
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "7822904"),
+            URLQueryItem(name: "client_id", value: "8199076"),
             URLQueryItem(name: "redirect_uri",
                          value: "https://oauth.vk.com/blank.html"
                         ),
@@ -52,7 +52,7 @@ class AuthVC: UIViewController {
             URLQueryItem(name: "scope", value: "271390"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "revoke", value: "1"),
-            URLQueryItem(name: "v", value: "5.131")
+            URLQueryItem(name: "v", value: Session.shared.version)
         ]
             
             guard let url = urlComponents.url else { return }
