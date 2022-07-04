@@ -98,7 +98,7 @@ extension AuthVC: WKNavigationDelegate {
             return
         }
 
-        print(url)
+//        print(url)
 
         let params: Dictionary<String, String> = fragment
             .components(separatedBy: "&")
@@ -116,7 +116,7 @@ extension AuthVC: WKNavigationDelegate {
 
         Session.shared.accessToken = token
         Session.shared.userId = Int(userId) ?? 0
-        Session.shared.expiresIn = Int(expiresIn) ?? 0
+        Session.shared.expiresIn = expiresIn
     
         showMainTabBarController()
         
