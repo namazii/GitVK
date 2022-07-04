@@ -24,22 +24,18 @@ class MainTabVC: UITabBarController {
         groupsTabBarItem.image = UIImage(systemName: "person.3")
         groupsVC.tabBarItem = groupsTabBarItem
         
+        let photosVC = PhotosVC()
+        let photosTabBarItem = UITabBarItem()
+        photosTabBarItem.title = "Галерея"
+        photosTabBarItem.image = UIImage(systemName: "photo")
+        photosVC.tabBarItem = photosTabBarItem
+        
+        
         let navigationFriendsVC = UINavigationController(rootViewController: friendsVC)
         let navigationGroupsVC = UINavigationController(rootViewController: groupsVC)
+        let navigationPhotosVC = UINavigationController(rootViewController: photosVC)
         
         // добавление 2 контролеров в таб бар
-        self.viewControllers = [navigationFriendsVC, navigationGroupsVC]
+        self.viewControllers = [ navigationFriendsVC, navigationGroupsVC, navigationPhotosVC ]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
