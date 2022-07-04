@@ -34,7 +34,7 @@ class FriendsAPI {
     
             guard let jsonData = data else { return }
             
-            print(jsonData.prettyJSON as Any)
+//            print(jsonData.prettyJSON as Any)
             
             let jsonDecoder = JSONDecoder()
             
