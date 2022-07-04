@@ -9,37 +9,23 @@ import UIKit
 
 final class FriendsVC: UIViewController {
     
+    var rootView: FriendsView { return self.view as! FriendsView }
+    
     var friendsAPI = FriendsAPI()
     
     var friends: [Friend] = []
     
     var isFriendsLoading = false
-    
-    lazy var refreshControl: UIRefreshControl = {
-        
-        let refreshControl = UIRefreshControl()
-        
-        refreshControl.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
-        
-        return refreshControl
-    }()
-    
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.prefetchDataSource = self
-        tableView.register(FriendCell.self, forCellReuseIdentifier: FriendCell.identifier)
-        
-        return tableView
-    }()
 
+    //MARK: - Lifecycle
+    override func loadView() {
+        self.view = FriendsView(frame: UIScreen.main.bounds)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupViews()
         fetchFriends()
+        setupDelegates()
     }
     
     //MARK: - Private Methods
@@ -53,32 +39,20 @@ final class FriendsVC: UIViewController {
             
             if offset == 0 {
                 self.friends = friends
-                self.tableView.reloadData()
+                self.rootView.tableView.reloadData()
                 return
             }
             
             self.friends.append(contentsOf: friends)
-            self.tableView.reloadData()
+            self.rootView.tableView.reloadData()
         }
     }
     
-    private func setupViews() {
-        view?.addSubview(tableView)
+    private func setupDelegates() {
         
-        view.backgroundColor = .systemBackground
-        
-        tableView.pinEdgesToSuperView()
-        tableView.refreshControl = refreshControl
-        
-    }
-    
-    //MARK: - Actions
-    @objc private func pullToRefreshAction() {
-        refreshControl.beginRefreshing()
-        
-        fetchFriends()
-        
-        refreshControl.endRefreshing()
+        rootView.tableView.delegate = self
+        rootView.tableView.dataSource = self
+        rootView.tableView.prefetchDataSource = self
     }
 }
 
@@ -86,11 +60,11 @@ final class FriendsVC: UIViewController {
 extension FriendsVC: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
-        print(indexPaths)
+//        print(indexPaths)
         
         let maxRow = indexPaths.map { $0.last ?? 0 }.max() ?? 0
         
-        print(maxRow)
+//        print(maxRow)
         
         if maxRow > friends.count - 5, isFriendsLoading == false {
             

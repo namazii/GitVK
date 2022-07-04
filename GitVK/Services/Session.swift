@@ -36,22 +36,32 @@ class Session {
             UserDefaults.standard.set(newValue, forKey: "userId")
         }
     }
-    var expiresIn: Int { //Сколько секунд действителен токен
+    var expiresIn: String { //Сколько секунд действителен токен
         get {
-            return UserDefaults.standard.integer(forKey: "expiresIn")
+            return UserDefaults.standard.string(forKey: "expiresIn") ?? ""
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "expiresIn")
+            let tokenDate = Date(timeIntervalSinceNow: Double(newValue) ?? 0)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YY, MMM d, HH:mm:ss"
+            let dateString = dateFormatter.string(from: tokenDate)
+            
+            UserDefaults.standard.set(dateString, forKey: "expiresIn")
         }
     }
     
     //isTokenValid
     
      static var isTokenValid: Bool {
-         let expiresIn = UserDefaults.standard.integer(forKey: "expiresIn")
+         let expiresIn = UserDefaults.standard.string(forKey: "expiresIn") ?? ""
          
-        let tokenDate = Date(timeIntervalSinceNow: Double(expiresIn))
+//        let tokenDate = Date(timeIntervalSinceNow: Double(expiresIn))
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateFormat = "YY, MMM d, HH:mm:ss"
+         guard let tokenDate = dateFormatter.date(from: expiresIn) else { return false }
+//         print("TOKEN DATE \(tokenDate)")
         let currentDate = Date()
+//         print("CURRENT DATE\(currentDate)")
         
         return currentDate < tokenDate
     }
