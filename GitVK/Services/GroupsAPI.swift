@@ -14,6 +14,17 @@ class GroupsAPI {
     // status
     // members_count
     
+    /*
+    func fetchGroups(offset: Int = 0) async throws -> [Group] {
+            do {
+                let groups = try await NetworkEngine.request(endpoint: GroupsEndpoint.fetchGroups(offset: offset))
+                return groups
+            } catch {
+                throw error
+            }
+    }
+     */
+    
     func fetchGroups(offset: Int = 0, completion: @escaping([Group]) -> ()) {
         
         var urlComponents = URLComponents()

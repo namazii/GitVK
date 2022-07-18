@@ -10,6 +10,49 @@ import Foundation
 //класс-сервис -> бизнес-логику -> запросы для друзей
 class FriendsAPI {
     
+    
+    func fetchFriends(offset: Int = 0) async throws -> [Friend] {
+        do {
+            let friends = try await request(endpoint: FriendsEndpoint.fetchFriends(offset: offset))
+            return friends
+        } catch {
+            throw error
+        }
+    }
+    
+    
+    func request(endpoint: Endpoint) async throws -> [Friend] {
+
+        //1 Конструктор URL
+        var components = URLComponents()
+        components.scheme = endpoint.scheme
+        components.host = endpoint.baseURL
+        components.path = endpoint.path
+        
+        components.queryItems = endpoint.parameters
+        
+        //2 Распаковали URL
+        guard let url = components.url else { return [] }
+        
+        //3 HTTP-запрос
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = endpoint.method
+        
+        //5 Запуск запроса
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            let responseObject = try JSONDecoder().decode(FriendResponse.self, from: data)
+            let friends = responseObject.response.items
+
+            return friends
+            
+        } catch  {
+            print(error)
+            throw error //return для ошибок
+        }
+    }
+    
     func fetchFriends(offset: Int = 0, completion: @escaping([Friend]) -> ()) {
         
         var urlComponents = URLComponents()

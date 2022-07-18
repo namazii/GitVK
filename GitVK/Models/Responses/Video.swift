@@ -2,7 +2,7 @@
 //  Video.swift
 //  GitVK
 //
-//  Created by Назар Ткаченко on 16.07.2022.
+//  Created by Назар Ткаченко on 18.07.2022.
 //
 
 import Foundation
@@ -128,3 +128,5 @@ struct Restriction: Codable {
 enum TypeEnum: String, Codable {
     case video = "video"
 }
+
+

@@ -1,5 +1,5 @@
 //
-//  VideosVC.swift
+//  VideoVC.swift
 //  GitVK
 //
 //  Created by Назар Ткаченко on 16.07.2022.

@@ -105,7 +105,7 @@ extension PhotosVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     
-        let inset = 16 //
+        let inset = 20 // внутренний отступ
         let itemsInRow = 3 // |[]|[]|
         let insetsWidth = inset * (itemsInRow + 1)//ширина отступов всех
         let availableWith = collectionView.bounds.width - CGFloat(insetsWidth)
