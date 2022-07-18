@@ -7,13 +7,13 @@
 
 import Foundation
 
-// MARK: - PhotoResponse
-struct PhotoResponse: Codable {
-    let response: PhotoItem
+// MARK: - PhotoJSON
+struct PhotoJSON: Codable {
+    let response: PhotoResponse
 }
 
-// MARK: - PhotoItem
-struct PhotoItem: Codable {
+// MARK: - PhotoResponse
+struct PhotoResponse: Codable {
     let count: Int
     let items: [Photo]
 }

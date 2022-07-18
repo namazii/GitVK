@@ -7,13 +7,25 @@
 
 import Foundation
 
+//struct Response: Codable {
+//    let response: Items?
+//}
+//
+//struct Items<T: Decodable>: Codable {
+//    let count: Int?
+//    let items: T?
+//}
+
+
+//FriendsResponse<FriendsItems<T>>
+
 // MARK: - Welcome
-struct FriendResponse: Codable {
-    let response: FriendItems
+struct FriendJSON: Codable {
+    let response: FriendResponse
 }
 
 // MARK: - Response
-struct FriendItems: Codable {
+struct FriendResponse: Codable {
     let count: Int
     let items: [Friend]
 }

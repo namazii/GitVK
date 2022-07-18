@@ -7,13 +7,13 @@
 
 import Foundation
 
-// MARK: - GroupResponse
-struct GroupResponse: Codable {
-    let response: GroupItems
+// MARK: - GroupJSON
+struct GroupJSON: Codable {
+    let response: GroupResponse
 }
 
-// MARK: - GroupItems
-struct GroupItems: Codable {
+// MARK: - GroupResponse
+struct GroupResponse: Codable {
     let count: Int
     let items: [Group]
 }

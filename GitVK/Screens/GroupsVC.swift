@@ -14,6 +14,7 @@ class GroupsVC: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         
+        tableView.allowsSelection = false
         tableView.delegate = self
         tableView.dataSource = self
         tableView.prefetchDataSource = self

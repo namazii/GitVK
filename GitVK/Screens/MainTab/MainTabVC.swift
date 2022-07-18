@@ -30,12 +30,26 @@ class MainTabVC: UITabBarController {
         photosTabBarItem.image = UIImage(systemName: "photo")
         photosVC.tabBarItem = photosTabBarItem
         
+        let newsFeedVC = NewsFeedVC()
+        let newsTabBarItem = UITabBarItem()
+        newsTabBarItem.title = "Новости"
+        newsTabBarItem.image = UIImage(systemName: "newspaper")
+        newsFeedVC.tabBarItem = newsTabBarItem
+        
+        let videoVC = VideosVC()
+        let videoTabBarItem = UITabBarItem()
+        videoTabBarItem.title = "Видео"
+        videoTabBarItem.image = UIImage(systemName: "film")
+        videoVC.tabBarItem = videoTabBarItem
+        
         
         let navigationFriendsVC = UINavigationController(rootViewController: friendsVC)
         let navigationGroupsVC = UINavigationController(rootViewController: groupsVC)
         let navigationPhotosVC = UINavigationController(rootViewController: photosVC)
+        let navigationNewsFeedVC = UINavigationController(rootViewController: newsFeedVC)
+        let navigationVideoVC = UINavigationController(rootViewController: videoVC)
         
         // добавление 2 контролеров в таб бар
-        self.viewControllers = [ navigationFriendsVC, navigationGroupsVC, navigationPhotosVC ]
+        self.viewControllers = [ navigationFriendsVC, navigationGroupsVC, navigationPhotosVC, navigationNewsFeedVC, navigationVideoVC ]
     }
 }

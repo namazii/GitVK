@@ -24,32 +24,45 @@ final class FriendsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchFriends()
         setupDelegates()
+        fetchFriends(offset: 0)
     }
     
     //MARK: - Private Methods
     
     private func fetchFriends(offset: Int = 0) {
-        friendsAPI.fetchFriends(offset: offset) { [weak self] friends in
-            
-            guard let self = self else { return }
-            
-            self.isFriendsLoading = false
-            
-            if offset == 0 {
-                self.friends = friends
-                self.rootView.tableView.reloadData()
-                return
+        
+        //Старая асинхронность через колбэки/кложуры
+        //Функция + колбэк (completion) -> асинхронный код -> на главном потоке
+        
+        //Новая асинхронность (настоящая асинхронность) ->
+        
+        //Task может запускать асинхронный код
+        Task {
+            do {
+                let friends = try await friendsAPI.fetchFriends(offset: friends.count)
+                
+                isFriendsLoading = false
+                
+                if offset == 0 {
+                    self.friends = friends
+                    self.rootView.tableView.reloadData()
+                    return
+                }
+                
+                self.friends.append(contentsOf: friends)
+                rootView.tableView.reloadData()
+                
+            } catch {
+                print(error)
+                //ALERT
             }
-            
-            self.friends.append(contentsOf: friends)
-            self.rootView.tableView.reloadData()
         }
     }
     
     private func setupDelegates() {
         
+        rootView.tableView.allowsSelection = false
         rootView.tableView.delegate = self
         rootView.tableView.dataSource = self
         rootView.tableView.prefetchDataSource = self
