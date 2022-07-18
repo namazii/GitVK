@@ -11,6 +11,7 @@ class PhotoCell: UICollectionViewCell {
     static let identifier = "PhotoCell"
     
     //MARK: - Private properties
+    
     private lazy var photoImageView: UIImageView = {
       let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

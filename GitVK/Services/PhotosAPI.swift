@@ -38,7 +38,7 @@ class PhotosAPI {
             let jsonDecoder = JSONDecoder()
             
             do {
-                let photoResponse = try jsonDecoder.decode(PhotoResponse.self, from: jsonData)
+                let photoResponse = try jsonDecoder.decode(PhotoJSON.self, from: jsonData)
                 
                 let photos = photoResponse.response.items
                 
