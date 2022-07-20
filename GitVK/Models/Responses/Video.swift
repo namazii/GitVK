@@ -15,12 +15,12 @@ struct VideoJSON: Codable {
 // MARK: - VideoResponse
 struct VideoResponse: Codable {
     let count: Int
-    let items: [Video]
+    let items: [Video]?
 }
 
 // MARK: - Video
 struct Video: Codable {
-    let addingDate, canComment, canLike, canRepost: Int
+    let addingDate, canComment, canLike, canRepost: Int?
     let canSubscribe, canAddToFaves, canAdd, comments: Int?
     let date: Int
     let itemDescription: String?
@@ -40,7 +40,7 @@ struct Video: Codable {
     let likes: LikesVideo
     let reposts: RepostsVideo
     let localViews: Int?
-    let platform: Platform?
+    let platform: String?
     let userID: Int?
     let restriction: Restriction?
 
@@ -91,10 +91,6 @@ struct LikesVideo: Codable {
         case count
         case userLikes = "user_likes"
     }
-}
-
-enum Platform: String, Codable {
-    case youTube = "YouTube"
 }
 
 // MARK: - Reposts
