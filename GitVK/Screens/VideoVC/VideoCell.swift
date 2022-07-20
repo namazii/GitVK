@@ -76,8 +76,10 @@ class VideoCell: UITableViewCell {
         }
         
         playerImageView.snp.makeConstraints { make in
-            make.top.bottom.equalTo(photoImageView).inset(170)
-            make.left.right.equalTo(photoImageView).inset(160)
+            make.center.equalTo(photoImageView.snp.center).inset(0)
+            make.height.equalTo(photoImageView.snp.width).multipliedBy(0.2)
+            make.width.equalTo(photoImageView.snp.width).multipliedBy(0.2)
+//            make.left.right.equalTo(contentView).inset(170)
             
         }
     }
