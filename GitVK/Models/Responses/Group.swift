@@ -20,10 +20,12 @@ struct GroupResponse: Codable {
 
 // MARK: - Group
 struct Group: Codable {
-    let id, verified: Int
-    let itemDescription: String
-    let membersCount: Int
-    let status, name, screenName: String
+    let id: Int
+    let verified: Int?
+    let itemDescription: String?
+    let membersCount: Int?
+    let name, screenName: String
+    let status: String?
     let isClosed: Int
     let type: String
     let isAdmin, isMember, isAdvertiser: Int
