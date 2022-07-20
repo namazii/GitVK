@@ -7,38 +7,84 @@
 
 import UIKit
 
-struct Friend {
-    var name = "test user"
-    var image = UIImage(named: "avatar")
-}
-
 final class FriendsVC: UIViewController {
     
-    var friends: [Friend] = [Friend()]
+    var rootView: FriendsView { return self.view as! FriendsView }
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(FriendCell.self, forCellReuseIdentifier: FriendCell.identifier)
-        
-        return tableView
-    }()
+    var friendsAPI = FriendsAPI()
+    
+    var friends: [Friend] = []
+    
+    var isFriendsLoading = false
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupViews()
+    //MARK: - Lifecycle
+    override func loadView() {
+        self.view = FriendsView(frame: UIScreen.main.bounds)
     }
     
-    private func setupViews() {
-        view?.addSubview(tableView)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupDelegates()
+        fetchFriends(offset: 0)
+    }
+    
+    //MARK: - Private Methods
+    
+    private func fetchFriends(offset: Int = 0) {
         
-        view.backgroundColor = .systemBackground
+        //Старая асинхронность через колбэки/кложуры
+        //Функция + колбэк (completion) -> асинхронный код -> на главном потоке
         
-        tableView.pinEdgesToSuperView()
+        //Новая асинхронность (настоящая асинхронность) ->
         
+        //Task может запускать асинхронный код
+        Task {
+            do {
+                let friends = try await friendsAPI.fetchFriends(offset: friends.count)
+                
+                isFriendsLoading = false
+                
+                if offset == 0 {
+                    self.friends = friends
+                    self.rootView.tableView.reloadData()
+                    return
+                }
+                
+                self.friends.append(contentsOf: friends)
+                rootView.tableView.reloadData()
+                
+            } catch {
+                print(error)
+                //ALERT
+            }
+        }
+    }
+    
+    private func setupDelegates() {
+        
+        rootView.tableView.allowsSelection = false
+        rootView.tableView.delegate = self
+        rootView.tableView.dataSource = self
+        rootView.tableView.prefetchDataSource = self
+    }
+}
+
+//MARK: - Extension
+extension FriendsVC: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+//        print(indexPaths)
+        
+        let maxRow = indexPaths.map { $0.last ?? 0 }.max() ?? 0
+        
+//        print(maxRow)
+        
+        if maxRow > friends.count - 5, isFriendsLoading == false {
+            
+            isFriendsLoading = true
+            
+            fetchFriends(offset: friends.count)
+        }
     }
 }
 

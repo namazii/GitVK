@@ -1,16 +1,16 @@
 //
-//  FriendCell.swift
+//  GroupCell.swift
 //  GitVK
 //
-//  Created by Назар Ткаченко on 22.06.2022.
+//  Created by Назар Ткаченко on 02.07.2022.
 //
 
 import UIKit
 import SDWebImage
 
-class FriendCell: UITableViewCell {
+class GroupCell: UITableViewCell {
 
-    static let identifier = "FriendCell"
+    static let identifier = "GroupCell"
     
     let photoImageView: UIImageView = {
       let imageView = UIImageView()
@@ -28,7 +28,7 @@ class FriendCell: UITableViewCell {
         
         return label
     }()
-    
+    //MARK: - LifeCycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -41,9 +41,9 @@ class FriendCell: UITableViewCell {
     }
     
     //MARK: - Public
-    func configure(_ friend: Friend) {
-        nameLabel.text = "\(friend.firstName) \(friend.lastName)"
-        photoImageView.sd_setImage(with: URL(string: friend.photo50))
+    func configure(_ group: Group) {
+        nameLabel.text = "\(group.name) \(group.itemDescription)"
+        photoImageView.sd_setImage(with: URL(string: group.photo50))
     }
     
     //MARK: - Private methods

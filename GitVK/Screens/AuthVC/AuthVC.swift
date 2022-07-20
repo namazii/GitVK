@@ -13,12 +13,11 @@ class AuthVC: UIViewController {
     lazy var webView: WKWebView = {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
-        
         webView.navigationDelegate = self
-        
         return webView
     }()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,17 +25,15 @@ class AuthVC: UIViewController {
         setupConstrains()
         
         if Session.isTokenValid {
-            // Переход на следующий контроллер
-            let mainTabVC = MainTabVC()
-            navigationController?.pushViewController(mainTabVC, animated: true)
-            navigationController?.isNavigationBarHidden = true
+            showMainTabBarController()
             return
         }
         
         authorizeToVK()
     }
     
-    func authorizeToVK() {
+    //MARK: - Private methods
+    private func authorizeToVK() {
         
         //https://oauth.vk.com/authorize?client_id=1&display=page&redirect_uri=http://example.com/callback&scope=friends&response_type=code&v=5.131
         
@@ -47,14 +44,15 @@ class AuthVC: UIViewController {
         urlComponents.path = "/authorize"
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "7822904"),
+            URLQueryItem(name: "client_id", value: "8199076"),
             URLQueryItem(name: "redirect_uri",
                          value: "https://oauth.vk.com/blank.html"
                         ),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "scope", value: "271390"),
             URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "revoke", value: "1")
+            URLQueryItem(name: "revoke", value: "1"),
+            URLQueryItem(name: "v", value: Session.shared.version)
         ]
             
             guard let url = urlComponents.url else { return }
@@ -63,27 +61,31 @@ class AuthVC: UIViewController {
             webView.load(request)
     }
     
-    func loadUrl() {
+    private func loadUrl() {
         guard let url = URL(string: "https://www.apple.com") else { return }
         if let data = try? Data(contentsOf: url) {
-            let request = URLRequest(url: url)
-            webView.load(data,
-                         mimeType: "application/pdf",
-                         characterEncodingName: "",
-                         baseURL: url
-            )
+            webView.load(data,mimeType: "application/pdf",characterEncodingName: "",baseURL: url)
         }
     }
     
-    func setupViews() {
+    private  func setupViews() {
         view.addSubview(webView)
     }
     
-    func setupConstrains() {
+    private func setupConstrains() {
         webView.pinEdgesToSuperView()
+    }
+    
+    //MARK: - Navigation
+    private func showMainTabBarController() {
+        // Переход на следующий контроллер
+        let mainTabVC = MainTabVC()
+        navigationController?.pushViewController(mainTabVC, animated: true)
+        navigationController?.isNavigationBarHidden = true
     }
 }
 
+//MARK: - Extensions
 extension AuthVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
 
@@ -96,7 +98,7 @@ extension AuthVC: WKNavigationDelegate {
             return
         }
 
-        print(url)
+//        print(url)
 
         let params: Dictionary<String, String> = fragment
             .components(separatedBy: "&")
@@ -113,14 +115,11 @@ extension AuthVC: WKNavigationDelegate {
         guard let token = params["access_token"], let userId = params["user_id"], let expiresIn = params["expires_in"] else { return }
 
         Session.shared.accessToken = token
-        Session.shared.userid = Int(userId) ?? 0
-        Session.shared.expiresIn = Int(expiresIn) ?? 0
-
-        // Переход на следующий контроллер
-        let mainTabVC = MainTabVC()
-        navigationController?.pushViewController(mainTabVC, animated: true)
-        navigationController?.isNavigationBarHidden = true
+        Session.shared.userId = Int(userId) ?? 0
+        Session.shared.expiresIn = expiresIn
     
+        showMainTabBarController()
+        
         decisionHandler(.cancel)
     }
 }
