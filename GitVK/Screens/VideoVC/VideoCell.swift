@@ -13,11 +13,22 @@ class VideoCell: UITableViewCell {
     
     static let identifier = "videoCell"
     
+    var ButtonPressed = false
     
     let photoImageView: UIImageView = {
         let photoImageView = UIImageView()
         
         return photoImageView
+    }()
+    
+    let playerImageView: UIImageView = {
+        let playerImageView = UIImageView()
+        
+        playerImageView.image = UIImage(systemName: "play.fill")
+        playerImageView.alpha = 0.7
+        playerImageView.tintColor = .gray
+        
+        return playerImageView
     }()
     
     let nameLabel: UILabel = {
@@ -48,6 +59,7 @@ class VideoCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(nameLabel)
         contentView.addSubview(photoImageView)
+        contentView.addSubview(playerImageView)
     }
     
     private func setupConstraints() {
@@ -56,9 +68,16 @@ class VideoCell: UITableViewCell {
             make.top.left.right.equalTo(contentView).inset(0)
             
         }
+        
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(photoImageView.snp.bottom).offset(10)
             make.left.right.bottom.equalTo(contentView).inset(20)
+        }
+        
+        playerImageView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(photoImageView).inset(170)
+            make.left.right.equalTo(photoImageView).inset(160)
+            
         }
     }
 }

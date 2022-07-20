@@ -231,11 +231,11 @@
 			children = (
 				12860B262879A17F00E97DE4 /* MainTab */,
 				BC6F1381286325E8004238F5 /* AuthVC */,
-				BCEDCCAA2882DFC400B5ADE4 /* VideoVC */,
 				BC6F1382286325F9004238F5 /* FriendsVC */,
 				BC6F1385286326A6004238F5 /* GroupsVC */,
 				BC9659822871CC0A00EDD91E /* PhotosVC */,
 				BC1482002879A53300F2B4B7 /* NewsFeed */,
+				BCEDCCAA2882DFC400B5ADE4 /* VideoVC */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

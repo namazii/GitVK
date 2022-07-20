@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class VideosVC: UIViewController {
     
@@ -60,11 +61,7 @@ class VideosVC: UIViewController {
 
 }
 //MARK: Extensions
-extension VideosVC: UITableViewDelegate {
-    
-}
-
-extension VideosVC: UITableViewDataSource {
+extension VideosVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
@@ -73,11 +70,23 @@ extension VideosVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: VideoCell.identifier, for: indexPath) as? VideoCell else { return UITableViewCell() }
         
         let video = self.videos[indexPath.row]
-        
+        cell.selectionStyle = .none
         cell.configure(video)
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let video = videos[indexPath.row]
+        
+        guard let videoURL = URL(string: video.player ?? "") else { return }
+        let player = AVPlayer(url: videoURL) //контроллер воспроизведения видеофайла
+        let playerVC = AVPlayerViewController()
+        playerVC.player = player
+        
+        present(playerVC, animated: true) {
+            player.play()
+        }
+    }
 }
