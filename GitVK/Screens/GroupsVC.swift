@@ -9,8 +9,17 @@ import UIKit
 
 class GroupsVC: UIViewController {
     
+    
     var viewModel = GroupsViewModel()
 
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        
+        searchBar.delegate = self
+        
+        return searchBar
+    }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         
@@ -39,6 +48,7 @@ class GroupsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+       
         viewModel.fetchGroups(offset: 0) {
         self.tableView.reloadData()
         }
@@ -47,7 +57,7 @@ class GroupsVC: UIViewController {
     //MARK: - Private Methods
     private func setupViews() {
         view.addSubview(tableView)
-        
+        navigationItem.titleView = searchBar
         view.backgroundColor = .systemBackground
         
         tableView.pinEdgesToSuperView()
@@ -108,5 +118,18 @@ extension GroupsVC: UITableViewDataSourcePrefetching {
                 tableView.reloadData()
             }
         }
+    }
+}
+
+extension GroupsVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        print(searchText)
+        
+        viewModel.searchGroups(offset: 0, search: searchText) {
+            self.tableView.reloadData()
+            
+        }
+       
     }
 }
