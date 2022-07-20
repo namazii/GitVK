@@ -36,7 +36,7 @@ class VideosAPI {
             
             let responseObject = try JSONDecoder().decode(VideoJSON.self, from: data)
             
-            let videoItem: [Video] = responseObject.response.items
+            let videoItem: [Video] = responseObject.response.items ?? []
         
             return (videoItem)
             } catch  {

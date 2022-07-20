@@ -64,7 +64,8 @@ class VideoCell: UITableViewCell {
     
     private func setupConstraints() {
         photoImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(contentView.snp.width)
+            make.width.equalTo(contentView.snp.width)
+            make.height.equalTo(contentView.snp.width).multipliedBy(0.6)
             make.top.left.right.equalTo(contentView).inset(0)
             
         }
