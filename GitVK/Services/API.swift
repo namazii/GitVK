@@ -7,14 +7,22 @@
 
 import Foundation
 
-/*
-//Универсальный запрос через который ходят все сервисы
-class NetworkEngine {
+enum AppError: Error {
+    case urlNotCreated
     
+    var description: String {
+        switch self {
+            
+        case .urlNotCreated:
+            return "Ошибка: URL не создана"
+        }
+    }
+}
 
-#warning("Написать универсальтный запрос через Generic-контейнер")
-    
-    class func request<T: Codable>(endpoint: Endpoint, model: Model) async throws -> [T] {
+//Универсальный запрос через который ходят все сервисы
+class API {
+
+    class func request<T: Codable>(endpoint: Endpoint, responseModel: T.Type) async throws -> T {
 
         //1 Конструктор URL
         var components = URLComponents()
@@ -25,7 +33,9 @@ class NetworkEngine {
         components.queryItems = endpoint.parameters
         
         //2 Распаковали URL
-        guard let url = components.url else { return [] }
+        guard let url = components.url else {
+            throw AppError.urlNotCreated
+        }
         
         //3 HTTP-запрос
         var urlRequest = URLRequest(url: url)
@@ -35,10 +45,10 @@ class NetworkEngine {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: urlRequest)
-            let responseObject = try JSONDecoder().decode(model.self, from: data)
-            let friends = responseObject.response.items
+            let responseBase = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
+            let responseObject = responseBase.response
 
-            return friends
+            return responseObject
             
         } catch  {
             print(error)
@@ -46,4 +56,4 @@ class NetworkEngine {
         }
     }
 }
-*/
+

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12BEB0CB288C254100178636 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BEB0CA288C254100178636 /* BaseResponse.swift */; };
 		BC0C09D1287C999F00BA7DD0 /* NewsFeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0C09D0287C999F00BA7DD0 /* NewsFeedAPI.swift */; };
 		BC1481E6287869FD00F2B4B7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BC1481E5287869FD00F2B4B7 /* SDWebImage */; };
 		BC1481E928786F5300F2B4B7 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = BC1481E828786F5300F2B4B7 /* SwiftKeychainWrapper */; };
 		BC1481F22878894B00F2B4B7 /* FriendsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F12878894B00F2B4B7 /* FriendsEndpoint.swift */; };
-		BC1481F42878895C00F2B4B7 /* NetworkEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F32878895C00F2B4B7 /* NetworkEngine.swift */; };
+		BC1481F42878895C00F2B4B7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F32878895C00F2B4B7 /* API.swift */; };
 		BC1481F62878896800F2B4B7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F52878896800F2B4B7 /* Endpoint.swift */; };
 		BC1481F82878930E00F2B4B7 /* GroupsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F72878930E00F2B4B7 /* GroupsEndpoint.swift */; };
 		BC1481FA2878932500F2B4B7 /* PhotosEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1481F92878932500F2B4B7 /* PhotosEndpoint.swift */; };
@@ -52,9 +53,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12BEB0CA288C254100178636 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		BC0C09D0287C999F00BA7DD0 /* NewsFeedAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedAPI.swift; sourceTree = "<group>"; };
 		BC1481F12878894B00F2B4B7 /* FriendsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsEndpoint.swift; sourceTree = "<group>"; };
-		BC1481F32878895C00F2B4B7 /* NetworkEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEngine.swift; sourceTree = "<group>"; };
+		BC1481F32878895C00F2B4B7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BC1481F52878896800F2B4B7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		BC1481F72878930E00F2B4B7 /* GroupsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsEndpoint.swift; sourceTree = "<group>"; };
 		BC1481F92878932500F2B4B7 /* PhotosEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosEndpoint.swift; sourceTree = "<group>"; };
@@ -129,7 +131,7 @@
 			path = MainTab;
 			sourceTree = "<group>";
 		};
-		BC1481ED2878886D00F2B4B7 /* Simple Network */ = {
+		BC1481ED2878886D00F2B4B7 /* Network Services */ = {
 			isa = PBXGroup;
 			children = (
 				BCC6C9DC28674378002EA106 /* FriendsAPI.swift */,
@@ -138,7 +140,7 @@
 				BC0C09D0287C999F00BA7DD0 /* NewsFeedAPI.swift */,
 				BCEDCCAF2882F02100B5ADE4 /* VideosAPI.swift */,
 			);
-			name = "Simple Network";
+			name = "Network Services";
 			sourceTree = "<group>";
 		};
 		BC1481EE287888B900F2B4B7 /* Network Layer */ = {
@@ -164,7 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				BC1481F52878896800F2B4B7 /* Endpoint.swift */,
-				BC1481F32878895C00F2B4B7 /* NetworkEngine.swift */,
+				BC1481F32878895C00F2B4B7 /* API.swift */,
+				12BEB0CA288C254100178636 /* BaseResponse.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -282,7 +285,7 @@
 			children = (
 				BC90E9FA2862005700B775BF /* Session.swift */,
 				BC1481EE287888B900F2B4B7 /* Network Layer */,
-				BC1481ED2878886D00F2B4B7 /* Simple Network */,
+				BC1481ED2878886D00F2B4B7 /* Network Services */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				BCC6C9E228674CB1002EA106 /* Data+PrettyJSON.swift in Sources */,
 				BCEDCCB02882F02100B5ADE4 /* VideosAPI.swift in Sources */,
 				BC1481F62878896800F2B4B7 /* Endpoint.swift in Sources */,
+				12BEB0CB288C254100178636 /* BaseResponse.swift in Sources */,
 				BCEDCCAE2882EF5C00B5ADE4 /* VideoCell.swift in Sources */,
 				BC9659812870AFAD00EDD91E /* GroupsViewModel.swift in Sources */,
 				BC6F138C2863614E004238F5 /* UIView+PinEdges.swift in Sources */,
@@ -431,7 +435,7 @@
 				BC9659862871CEF900EDD91E /* PhotoCell.swift in Sources */,
 				BC6F138E28636458004238F5 /* FriendCell.swift in Sources */,
 				BCC2B006286A33E600BBCE08 /* Group.swift in Sources */,
-				BC1481F42878895C00F2B4B7 /* NetworkEngine.swift in Sources */,
+				BC1481F42878895C00F2B4B7 /* API.swift in Sources */,
 				BC38C31C285B03B2004AC211 /* AppDelegate.swift in Sources */,
 				BCC6C9DD28674378002EA106 /* FriendsAPI.swift in Sources */,
 				BC0C09D1287C999F00BA7DD0 /* NewsFeedAPI.swift in Sources */,

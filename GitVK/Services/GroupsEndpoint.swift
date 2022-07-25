@@ -9,7 +9,8 @@ import Foundation
 
 enum GroupsEndpoint: Endpoint {
     
-case fetchGroups(offset: Int)
+    case fetchGroups(offset: Int)
+    //case searchGroups
     
     var scheme: String {
         switch self {
