@@ -36,13 +36,9 @@ class GroupsVC: UIViewController {
     lazy var refreshControl: UIRefreshControl = {
         
         let refreshControl = UIRefreshControl()
-        
         refreshControl.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
-        
         return refreshControl
     }()
-    
-    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -62,10 +58,7 @@ class GroupsVC: UIViewController {
         
         tableView.pinEdgesToSuperView()
         tableView.refreshControl = refreshControl
-        
     }
-    
-   
     
     //MARK: - Actions
     @objc private func pullToRefreshAction() {

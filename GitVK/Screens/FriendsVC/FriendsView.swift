@@ -17,6 +17,13 @@ final class FriendsView: UIView {
         return tableView
     }()
     
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.showsCancelButton = true
+        
+        return searchBar
+    }()
+    
     lazy var refreshControl: UIRefreshControl = {
         
         let refreshControl = UIRefreshControl()
@@ -33,6 +40,7 @@ final class FriendsView: UIView {
     //MARK: - View Hierarchy
     private func setupViews() {
         self.addSubview(tableView)
+        
         
         self.backgroundColor = .systemBackground
         

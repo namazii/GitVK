@@ -38,7 +38,7 @@ struct Friend: Codable {
     let canAccessClosed: Bool?
     let lastName: String
     let photo50: String
-    let trackCode: String
+    let trackCode: String?
     let isClosed: Bool?
     let firstName: String
     let deactivated: String?

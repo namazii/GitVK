@@ -98,18 +98,20 @@ extension VideosVC: UITableViewDataSource, UITableViewDelegate {
 
         
         //Загрузка видео через UIApplication
-        //UIApplication.shared.open(videoURL, options: [:], completionHandler: nil)
+//        UIApplication.shared.open(videoURL, options: [:], completionHandler: nil)
         
         //Загрузка видео через Safari Browser
-        #warning("Поискать как запускать видео сразу")
+       
         let config = SFSafariViewController.Configuration()
         config.entersReaderIfAvailable = true
+        
 
         let safariVC = SFSafariViewController(url: videoURL, configuration: config)
         present(safariVC, animated: true)
         
 //        //Загрузка видео через WKWebView
 //        let webView = WKWebView(frame: UIScreen.main.bounds)
+//
 //        view.addSubview(webView)
 //        let request = URLRequest(url: videoURL)
 //        webView.load(request)

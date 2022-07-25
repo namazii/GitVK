@@ -16,6 +16,7 @@ class GroupsViewModel {
     var isGroupsLoading = false
     
     func searchGroups(offset: Int = 0, search: String, completion: @escaping() -> ()) {
+        
         groupsAPI.searchGroups(offset: offset, search: search) { [weak self] groups in
             guard let self = self else { return }
             self.isGroupsLoading = false
