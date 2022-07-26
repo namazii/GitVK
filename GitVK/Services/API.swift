@@ -44,8 +44,9 @@ class API {
         //5 Запуск запроса
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            let (data, _) = try await URLSession.shared.data(for: urlRequest)
             let responseBase = try JSONDecoder().decode(BaseResponse<T>.self, from: data)
+            
             let responseObject = responseBase.response
 
             return responseObject
