@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import WebKit
 
 class VideoCell: UITableViewCell {
     
@@ -15,29 +16,42 @@ class VideoCell: UITableViewCell {
     
     var ButtonPressed = false
     
-    let photoImageView: UIImageView = {
-        let photoImageView = UIImageView()
+//    private let photoImageView: UIImageView = {
+//        let photoImageView = UIImageView()
+//
+//        return photoImageView
+//    }()
+    
+    private let playerVideo: WKWebView = {
+        let webView = WKWebView()
         
-        return photoImageView
+        return webView
     }()
     
-    let playerImageView: UIImageView = {
-        let playerImageView = UIImageView()
-        
-        playerImageView.image = UIImage(systemName: "play.fill")
-        playerImageView.alpha = 0.7
-        playerImageView.tintColor = .gray
-        
-        return playerImageView
-    }()
+//    private let playerImageView: UIImageView = {
+//        let playerImageView = UIImageView()
+//
+//        playerImageView.image = UIImage(systemName: "play.fill")
+//        playerImageView.alpha = 0.7
+//        playerImageView.tintColor = .gray
+//
+//        return playerImageView
+//    }()
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         
         return label
     }()
     
     //MARK: - LifeCycle
+    override func prepareForReuse() {
+//        playerVideo.reload()
+//        photoImageView.image = nil
+//        playerImageView.image = nil
+        nameLabel.text = nil
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -52,18 +66,30 @@ class VideoCell: UITableViewCell {
     //MARK: Public
     func configure(_ video: Video) {
         nameLabel.text = video.title
-        photoImageView.sd_setImage(with: URL(string: video.image.last?.url ?? "" ))
+//        photoImageView.sd_setImage(with: URL(string: video.image.last?.url ?? "" ))
+        
+        guard let videoURL = URL(string: video.player ?? "") else { return }
+        let request = URLRequest(url: videoURL)
+        playerVideo.load(request)
     }
     
     //MARK: - PrivateMethods
     private func setupViews() {
         contentView.addSubview(nameLabel)
-        contentView.addSubview(photoImageView)
-        contentView.addSubview(playerImageView)
+        contentView.addSubview(playerVideo)
+//        contentView.addSubview(photoImageView)
+//        contentView.addSubview(playerImageView)
     }
     
     private func setupConstraints() {
-        photoImageView.snp.makeConstraints { make in
+//        photoImageView.snp.makeConstraints { make in
+//            make.width.equalTo(contentView.snp.width)
+//            make.height.equalTo(contentView.snp.width).multipliedBy(0.6)
+//            make.top.left.right.equalTo(contentView).inset(0)
+//
+//        }
+        
+        playerVideo.snp.makeConstraints { make in
             make.width.equalTo(contentView.snp.width)
             make.height.equalTo(contentView.snp.width).multipliedBy(0.6)
             make.top.left.right.equalTo(contentView).inset(0)
@@ -71,16 +97,16 @@ class VideoCell: UITableViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(10)
+            make.top.equalTo(playerVideo.snp.bottom).offset(10)
             make.left.right.bottom.equalTo(contentView).inset(20)
         }
         
-        playerImageView.snp.makeConstraints { make in
-            make.center.equalTo(photoImageView.snp.center).inset(0)
-            make.height.equalTo(photoImageView.snp.width).multipliedBy(0.2)
-            make.width.equalTo(photoImageView.snp.width).multipliedBy(0.2)
-//            make.left.right.equalTo(contentView).inset(170)
-            
-        }
+//        playerImageView.snp.makeConstraints { make in
+//            make.center.equalTo(photoImageView.snp.center).inset(0)
+//            make.height.equalTo(photoImageView.snp.width).multipliedBy(0.2)
+//            make.width.equalTo(photoImageView.snp.width).multipliedBy(0.2)
+////            make.left.right.equalTo(contentView).inset(170)
+//            
+//        }
     }
 }
